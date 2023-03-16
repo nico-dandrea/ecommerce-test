@@ -1,8 +1,5 @@
 {% extends 'base.html.twig' %} {% block title %}Product {% endblock %} {% block
 body %}
-
-<h1>Product</h1>
-
 <div class="overflow-hidden bg-white shadow sm:rounded-lg">
   <div class="px-4 py-5 sm:px-6">
     <h3 class="text-base font-semibold leading-6 text-gray-900">
@@ -50,13 +47,12 @@ body %}
           {{ product.rating.count }}
         </dd>
       </div>
+      <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+        <dt class="text-sm font-medium text-black-500">
+          <a href="{{ path('app_product_index') }}">Back to list</a>
+        </dt>
+      </div>
     </dl>
   </div>
 </div>
-
-<a href="{{ path('app_product_index') }}">back to list</a>
-
-<a href="{{ path('app_product_edit', { id: product.id }) }}">edit</a>
-
-{{ include("product/_delete_form.html.twig") }}
 {% endblock %}
