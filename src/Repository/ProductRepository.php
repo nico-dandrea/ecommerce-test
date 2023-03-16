@@ -36,6 +36,13 @@ class ProductRepository extends ServiceEntityRepository
         return $this->serializer->deserialize($data, Product::class.'[]', 'json');
     }
 
+    public function findById(int $id): ?Product
+    {
+        $response = $this->httpClient->request('GET', "https://fakestoreapi.com/products/{$id}");
+        $data = $response->getContent();
+        return $this->serializer->deserialize($data, Product::class, 'json');
+    }
+
     public function save(Product $entity, bool $flush = false): void
     {
         $this->getEntityManager()->persist($entity);

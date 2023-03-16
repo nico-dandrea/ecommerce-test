@@ -29,6 +29,9 @@ class Product
     #[ORM\Column]
     private array $rating = [];
 
+    #[ORM\Column(length: 25)]
+    private ?string $category = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -109,5 +112,17 @@ class Product
     public function getCount(): ?int
     {
         return $this->rating['count'] ?? null;
+    }
+
+    public function getCategory(): ?string
+    {
+        return $this->category;
+    }
+
+    public function setCategory(string $category): self
+    {
+        $this->category = $category;
+
+        return $this;
     }
 }
